@@ -17,7 +17,7 @@ st.markdown("""
     div[data-testid="stNumberInput"] label p,
     div[data-testid="stSelectbox"] label p {
         font-size: 25px !important;
-        font-weight: 700 !important;
+        font-weight: normal !important;
         color: #1f2937 !important;
     }
     </style>
