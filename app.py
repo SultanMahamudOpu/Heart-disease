@@ -6,7 +6,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import shap 
 
-# 1. Page Config & Custom CSSaaaaaaaaa
+# 1. Page Config & Custom CSS
 st.set_page_config(page_title="CVD DSS System", page_icon="🫀", layout="wide")
 
 st.markdown("""
@@ -122,7 +122,7 @@ with col_outputs:
         risk_prob = model.predict_proba(user_data_scaled)[0]
         
         # ---------------------------------------------------------
-        # 🟢 Pre-calculating SHAP values 
+        # Pre-calculating SHAP values 
         # ---------------------------------------------------------
         try:
             explainer = shap.TreeExplainer(model)
@@ -146,7 +146,7 @@ with col_outputs:
             target_shap = None
             st.error(f"Error in SHAP processing: {e}")
 
-    # [A] Final Risk Prediction
+        # [A] Final Risk Prediction
         st.subheader("1. Final CVD Risk Prediction")
         
         if prediction == 2:
@@ -210,13 +210,26 @@ with col_outputs:
                           labels={'x': 'Risk Category', 'y': 'Probability (%)'},
                           color=prob_labels, color_discrete_sequence=['#10b981', '#f59e0b', '#ef4444'])
                           
-        # 🟢 Increasing the percentage text size and color for better visibility
         fig_prob.update_traces(
             textposition='outside',
-            textfont_size=40,        # Size of the percentage text
-            textfont_color='black'   # Color of the text
+            textfont_size=40,        
+            textfont_color='black'   
         )
-        fig_prob.update_layout(yaxis_range=[0, 115]) # Ensure the large text doesn't get cut off
+        
+        # অক্ষের সংশোধিত কনফিগারেশন (Error Fixed)
+        fig_prob.update_layout(
+            yaxis_range=[0, 115],
+            xaxis=dict(
+                tickfont=dict(size=22, family="sans-serif", weight="bold"),  # font_family বদলে family এবং বোল্ড করা হয়েছে
+                title=dict(font=dict(size=24))                     
+            ),
+            yaxis=dict(
+                tickfont=dict(size=18),                            
+                title=dict(font=dict(size=24))                     
+            ),
+            showlegend=False                                       
+        )
+        
         st.plotly_chart(fig_prob, use_container_width=True)
         
         st.markdown("---")
