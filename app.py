@@ -216,15 +216,15 @@ with col_outputs:
             textfont_color='black'   
         )
         
-        # অক্ষের সংশোধিত কনফিগারেশন (Error Fixed)
+        # অক্ষের সংশোধিত কনফিগারেশন (Text Color Black করা হলো)
         fig_prob.update_layout(
             yaxis_range=[0, 115],
             xaxis=dict(
-                tickfont=dict(size=22, family="sans-serif", weight="bold"),  # font_family বদলে family এবং বোল্ড করা হয়েছে
+                tickfont=dict(size=22, family="sans-serif", weight="bold", color="black"),  # এখানে color="black" যোগ করা হয়েছে
                 title=dict(font=dict(size=24))                     
             ),
             yaxis=dict(
-                tickfont=dict(size=18),                            
+                tickfont=dict(size=18, color="black"),                            # Y-অক্ষের সংখ্যার কালারও black করা হলো
                 title=dict(font=dict(size=24))                     
             ),
             showlegend=False                                       
