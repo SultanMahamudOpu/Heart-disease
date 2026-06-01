@@ -220,7 +220,7 @@ with col_outputs:
         fig_prob.update_layout(
             yaxis_range=[0, 115],
             xaxis=dict(
-                tickfont=dict(size=22, family="sans-serif", weight="bold", color="black"),  # এখানে color="black" যোগ করা হয়েছে
+                tickfont=dict(size=22, family="sans-serif", color="black"),  # এখানে color="black" যোগ করা হয়েছে
                 title=dict(font=dict(size=24))                     
             ),
             yaxis=dict(
