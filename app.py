@@ -146,18 +146,60 @@ with col_outputs:
             target_shap = None
             st.error(f"Error in SHAP processing: {e}")
 
-        # [A] Final Risk Prediction
+    # [A] Final Risk Prediction
         st.subheader("1. Final CVD Risk Prediction")
-        if prediction == 2:
-            st.error("🚨 **HIGH RISK DETECTED**")
-            st.write("Immediate medical consultation advised.")
-        elif prediction == 1:
-            st.warning("⚠️ **INTERMEDIARY RISK**")
-            st.write("Aggressive lifestyle modification recommended.")
-        else:
-            st.success("✅ **LOW RISK**")
-            st.write("Maintain healthy lifestyle.")
         
+        if prediction == 2:
+            st.markdown("""
+                <div style="
+                    background-color: #bd1c1c; 
+                    color: white; 
+                    padding: 20px; 
+                    text-align: center; 
+                    border-radius: 10px;
+                    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+                    margin-bottom: 15px;">
+                    <h1 style="color: white; margin: 0; font-size: 45px; font-weight: 800; letter-spacing: 2px;">
+                        🚨 HIGH RISK DETECTED 🚨
+                    </h1>
+                </div>
+            """, unsafe_allow_html=True)
+            st.write("Immediate medical consultation advised.")
+            
+        elif prediction == 1:
+            st.markdown("""
+                <div style="
+                    background-color: #d97706; 
+                    color: white; 
+                    padding: 20px; 
+                    text-align: center; 
+                    border-radius: 10px;
+                    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+                    margin-bottom: 15px;">
+                    <h1 style="color: white; margin: 0; font-size: 40px; font-weight: 800;">
+                        ⚠️ INTERMEDIARY RISK ⚠️
+                    </h1>
+                </div>
+            """, unsafe_allow_html=True)
+            st.write("Aggressive lifestyle modification recommended.")
+            
+        else:
+            st.markdown("""
+                <div style="
+                    background-color: #16a34a; 
+                    color: white; 
+                    padding: 20px; 
+                    text-align: center; 
+                    border-radius: 10px;
+                    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+                    margin-bottom: 15px;">
+                    <h1 style="color: white; margin: 0; font-size: 40px; font-weight: 800;">
+                        ✅ LOW RISK ✅
+                    </h1>
+                </div>
+            """, unsafe_allow_html=True)
+            st.write("Maintain healthy lifestyle.")
+            
         st.markdown("---")
         
         # [B] Probability Breakdown
